@@ -1,3 +1,9 @@
+# revision 18312
+# category Package
+# catalog-ctan /macros/generic/frame
+# catalog-date 2010-06-06 13:50:32 +0200
+# catalog-license lppl
+# catalog-version 1.0
 Name:		texlive-frame
 Version:	1.0
 Release:	1
@@ -43,6 +49,7 @@ box of given dimensions.
 %doc %{_texmfdistdir}/doc/generic/frame/README
 %doc %{_texmfdistdir}/doc/generic/frame/frame-doc.pdf
 %doc %{_texmfdistdir}/doc/generic/frame/frame-doc.tex
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -53,3 +60,5 @@ box of given dimensions.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
