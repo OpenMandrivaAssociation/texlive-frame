@@ -3,7 +3,7 @@ Version:	18312
 Release:	2
 Summary:	Framed boxes for Plain TeX
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/macros/generic/frame
+URL:		https://www.ctan.org/tex-archive/macros/generic/frame
 License:	LPPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/frame.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/frame.doc.r%{version}.tar.xz
