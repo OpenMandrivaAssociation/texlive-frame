@@ -1,46 +1,24 @@
-Name:		texlive-frame
-Version:	18312
-Release:	2
+%global tl_name frame
+%global tl_revision 18312
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.0
+Release:	%{tl_revision}.1
 Summary:	Framed boxes for Plain TeX
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/generic/frame
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/frame.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/frame.doc.r%{version}.tar.xz
+License:	lppl
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/frame.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/frame.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
+BuildSystem:	texlive
 BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+%texlive_base_requires
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-A jiffy file (taken from fancybox) for placing a frame around a
-box of text. The macros also provide for typesetting an empty
-box of given dimensions.
+A jiffy file (taken from fancybox) for placing a frame around a box of
+text. The macros also provide for typesetting an empty box of given
+dimensions.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/generic/frame/frame.sty
-%{_texmfdistdir}/tex/generic/frame/frame.tex
-%doc %{_texmfdistdir}/doc/generic/frame/Changes
-%doc %{_texmfdistdir}/doc/generic/frame/Makefile
-%doc %{_texmfdistdir}/doc/generic/frame/README
-%doc %{_texmfdistdir}/doc/generic/frame/frame-doc.pdf
-%doc %{_texmfdistdir}/doc/generic/frame/frame-doc.tex
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc %{buildroot}%{_texmfdistdir}
